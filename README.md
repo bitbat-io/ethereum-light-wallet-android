@@ -18,4 +18,4 @@ react native based light ethreum waller
   react-native run-android
  `
  
- Otherwise you can simply install [wallet.apk](https://github.com/bitbat-io/ethereum-light-wallet-android/blob/master/wallet.apk)
+ Otherwise you can simply install [wallet.apk](https://i.diawi.com/TAVZWi)
