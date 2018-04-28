@@ -24,6 +24,8 @@ import {
     CREATE_WALLET_CREATE_INPORT_WALLET_SCENE,
     CREATE_WALLET_DISPLAY_PASSPHRASE,
     SHOW_QR_SCENE,
+    SCAN_QR_SCENE,
+    ETHER_AMOUNT_SCENE,
 } from '../Constants/scene.constants';
 
 /** Scenes */
@@ -32,6 +34,8 @@ import CreateWalletNameInputScene from '../Scene/Create-Wallet-Name-Input-Scene/
 import CreateWalletCreateImportWallet from '../Scene/Create-Wallet-Inport-Create-Scene/createWalletInportCreate.scene';
 import CreateWalletDisplayPassphrase from '../Scene/Create-Wallet-Passphrase-Display-Scene/createWalletPassphraseDisplay.scene';
 import ShowQRScene from '../Scene/Show-QR-Scene/showQR.scene';
+import ScanQRScene from '../Scene/Scan-QR-Scene/scanQR.scene';
+import EtherAmountScene from '../Scene/Ether-Amount-Scene/enterAmount.scene';
 
 const Root = () => (
     <Router>
@@ -47,11 +51,13 @@ const Root = () => (
                         key="root"
                         titleStyle={{ alignSelf: 'center' }}
                     >
-                        <Scene hideNavBar key={HOME_SCENE} initial clone component={HomeScene} />
+                        <Scene hideNavBar initial key={HOME_SCENE} clone component={HomeScene} />
                         <Scene key={CREATE_WALLET_NAME_INPUT_SCENE} clone component={CreateWalletNameInputScene} />
                         <Scene key={CREATE_WALLET_CREATE_INPORT_WALLET_SCENE} clone component={CreateWalletCreateImportWallet} />
                         <Scene key={CREATE_WALLET_DISPLAY_PASSPHRASE} clone component={CreateWalletDisplayPassphrase} />
                         <Scene key={SHOW_QR_SCENE} clone component={ShowQRScene} />
+                        <Scene key={SCAN_QR_SCENE} clone component={ScanQRScene} />
+                        <Scene key={ETHER_AMOUNT_SCENE} clone component={EtherAmountScene} />
                     </Stack>
                 </Lightbox>
             </Modal>

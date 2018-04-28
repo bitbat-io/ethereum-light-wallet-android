@@ -6,7 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import { SceneCommonStyles, TextStyles, ButtonStyles, InputBoxStyle } from '../../Common/style.common';
 
 /** Routes */
-import { } from '../../Constants/scene.constants';
+import { SCAN_QR_SCENE } from '../../Constants/scene.constants';
 
 export default class EnterAmountScene extends Component {
     constructor(props) {
@@ -21,8 +21,9 @@ export default class EnterAmountScene extends Component {
         const slot = {
             amount: this.state.amount,
         }
-        // Actions.push(, { slot })
+        Actions.push(SCAN_QR_SCENE, { slot });
     }
+
     render() {
         const { amount } = this.state;
         return (

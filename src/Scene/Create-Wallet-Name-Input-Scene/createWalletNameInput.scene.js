@@ -6,7 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import { SceneCommonStyles, TextStyles, ButtonStyles, InputBoxStyle } from '../../Common/style.common';
 
 /** Routes */
-import { CREATE_WALLET_CREATE_INPORT_WALLET_SCENE } from '../../Constants/scene.constants';
+import { CREATE_WALLET_DISPLAY_PASSPHRASE } from '../../Constants/scene.constants';
 
 export default class CreateWalletNameInput extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ export default class CreateWalletNameInput extends Component {
         const slot = {
             walletName: this.state.walletName,
         }
-        Actions.push(CREATE_WALLET_CREATE_INPORT_WALLET_SCENE, { slot })
+        Actions.push(CREATE_WALLET_DISPLAY_PASSPHRASE, { slot })
     }
     render() {
         const { walletName } = this.state;
