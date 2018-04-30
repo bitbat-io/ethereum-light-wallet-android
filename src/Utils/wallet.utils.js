@@ -4,8 +4,7 @@ const { HDNode, providers, utils, Wallet } = ethers;
 
 import { TEST_RPC_SERVER, NETWORK } from '../Constants/global.constants';
 
-const PROVIDER = new ethers.providers.JsonRpcProvider(TEST_RPC_SERVER, NETWORK);
-
+export const PROVIDER = new providers.InfuraProvider('ropsten', 'BPmY2XJlIpK6RhWMmJW3 ');
 /**
  * Util function to generate array of mnemonics
  * @returns {array}

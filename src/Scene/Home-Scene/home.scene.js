@@ -13,17 +13,18 @@ import { CREATE_WALLET_NAME_INPUT_SCENE } from '../../Constants/scene.constants'
 import WalletCard from '../../Components/Wallet-Card/walletCard.component';
 
 /** Utils */
-import { PersistWallet } from '../../Utils/persist.utils';
+import { PersistWallet, FetchAllWallets } from '../../Utils/persist.utils';
 
 export default class HomeScene extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            walletList: []
+            walletList: [],
+            refresh: false,
         }
     }
 
-    componentDidMount = () => {
+    componentDidMount = async () => {
         const { slot } = this.props;
         if (slot && typeof slot == 'object' && slot.wallet) {
             const wallet = slot.wallet;
@@ -31,10 +32,16 @@ export default class HomeScene extends Component {
             PersistWallet(wallet);
             this.pushWallet(wallet);
         }
+        const wallets = await FetchAllWallets();
+        this.setState({ walletList: wallets || [] });
     }
 
-    pushWallet = (slot) => {
-        this.setState({ walletList: [...this.state.walletList, slot] });
+    pushWallet = async (wallet) => {
+        console.log('push', wallet);
+        const c = await wallet.getBalance();
+        console.log(c);
+
+        this.setState({ walletList: [...this.state.walletList, wallet], refresh: !this.state.refresh });
     }
 
     RenderItem = ({ item }) => {
@@ -51,7 +58,7 @@ export default class HomeScene extends Component {
 
     render() {
         const { walletList } = this.state;
-
+        console.log(walletList);
         return (
             <View
                 style={SceneCommonStyles.container}
@@ -70,7 +77,8 @@ export default class HomeScene extends Component {
                         data={walletList}
                         renderItem={this.RenderItem}
                         showsVerticalScrollIndicator={false}
-                        keyExtractor={(item, key) => String(item)}
+                        keyExtractor={(item) => item.address}
+                        extraData={this.state.refresh}
                     />
                 </View>
                 <ActionButton

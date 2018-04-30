@@ -8,12 +8,16 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import { SceneCommonStyles, TextStyles } from '../../Common/style.common';
 import { PRIMARY, TEXT_COLOR } from '../../Constants/color.constants';
 
+/** Utils */
+import { createTransaction } from '../../Utils/transactions.utils';
 
 export default class ScanQRScene extends Component {
     onSuccess(e) {
         const { amount } = this.props.slot;
-        const address = e.data;
-        
+        const toAddress = e.data;
+
+        const transaction = createTransaction(toAddress, amount);
+        console.log(transaction);
     }
 
     render() {
